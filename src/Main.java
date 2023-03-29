@@ -50,7 +50,7 @@ public class Main {
 
             for (String filePath : filePaths) {
                 try (FileInputStream fis = new FileInputStream(filePath)) {
-                    ZipEntry entry = new ZipEntry(filePath); // в архиве путь целиком получается, некрасиво, но как иначе непонятно, ведь в метод путь целиком передаем
+                    ZipEntry entry = new ZipEntry(new File(filePath).getName()); // в архиве путь целиком получается, некрасиво, но как иначе непонятно, ведь в метод путь целиком передаем
                     zout.putNextEntry(entry);
                     byte[] buffer = new byte[fis.available()];
                     fis.read(buffer);
